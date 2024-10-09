@@ -37,7 +37,7 @@ download_release() {
   version="$1"
   filename="$2"
 
-  url="$GH_REPO/releases/download/v${version}/viddy_$(uname -s)_x86_64.tar.gz"
+  url="$GH_REPO/releases/download/v${version}/viddy-v${version}-$(uname -s | tr '[:upper:]' '[:lower:]' | sed 's/darwin/macos/')-x86_64.tar.gz"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
